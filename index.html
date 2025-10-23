@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EX Platform Recommender</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
+  <meta name="color-scheme" content="light dark">
+</head>
+<body>
+  <div class="app">
+    <header class="hero">
+      <h1>Employee Experience Platform Recommender</h1>
+      <p>Pick your top three priorities. We’ll suggest the best‑fit platforms.</p>
+      <button id="openExplainers" class="ghost">What do these categories mean?</button>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>Select your priorities</h2>
+        <div class="selectors">
+          <div class="select-group">
+            <label for="priority1">Priority 1</label>
+            <select id="priority1"><option value="">Choose…</option></select>
+          </div>
+          <div class="select-group">
+            <label for="priority2">Priority 2</label>
+            <select id="priority2" disabled><option value="">Choose…</option></select>
+          </div>
+          <div class="select-group">
+            <label for="priority3">Priority 3</label>
+            <select id="priority3" disabled><option value="">Choose…</option></select>
+          </div>
+        </div>
+        <div class="actions">
+          <button id="submitBtn" class="primary" disabled>Get recommendations</button>
+          <button id="restartBtn" class="subtle" disabled>Restart</button>
+        </div>
+      </section>
+
+      <section id="results" class="results" hidden>
+        <h2>Top recommendations</h2>
+        <ol id="topList" class="top-list"></ol>
+        <div class="winner">
+          <h3>Top priority winner</h3>
+          <p id="winnerText"></p>
+        </div>
+      </section>
+    </main>
+    <footer class="foot">
+      <small>Built for quick comparisons. Scores come from our research.</small>
+    </footer>
+  </div>
+
+  <!-- Explainer Modal -->
+  <div class="modal" id="explainerModal" aria-hidden="true" role="dialog" aria-labelledby="explainerTitle">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-content" role="document">
+      <div class="modal-head">
+        <h3 id="explainerTitle">Category explainers</h3>
+        <button class="icon-btn" id="closeExplainers" aria-label="Close" title="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="explainerBody"></div>
+      </div>
+      <div class="modal-foot">
+        <button id="prevExplain" class="nav">&larr; Prev</button>
+        <div class="dots" id="dots"></div>
+        <button id="nextExplain" class="nav">Next &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
