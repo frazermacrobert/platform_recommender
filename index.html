@@ -12,7 +12,7 @@
   <div class="app">
     <header class="hero">
       <h1>Employee Experience Platform Recommender</h1>
-      <p>Pick your top three priorities. We’ll suggest the best‑fit platforms.</p>
+      <p>Pick your top three priorities. We’ll suggest the best-fit platforms.</p>
       <button id="openExplainers" class="ghost">What do these categories mean?</button>
     </header>
 
@@ -33,6 +33,28 @@
             <select id="priority3" disabled><option value="">Choose…</option></select>
           </div>
         </div>
+
+        <h2 class="mt">Filters</h2>
+        <div class="selectors two">
+          <div class="select-group">
+            <label for="hosting">Platform hosting</label>
+            <select id="hosting">
+              <option value="either">Either</option>
+              <option value="standalone">Fully standalone</option>
+              <option value="sharepoint">Requires SharePoint</option>
+            </select>
+          </div>
+          <div class="select-group">
+            <label for="orgSize">Organisation size</label>
+            <select id="orgSize">
+              <option value="u1000">&lt; 1,000</option>
+              <option value="u5000">~5,000</option>
+              <option value="u20000">~20,000</option>
+              <option value="u50000">50,000+</option>
+            </select>
+          </div>
+        </div>
+
         <div class="actions">
           <button id="submitBtn" class="primary" disabled>Get recommendations</button>
           <button id="restartBtn" class="subtle" disabled>Restart</button>
@@ -49,7 +71,7 @@
       </section>
     </main>
     <footer class="foot">
-      <small>Built for quick comparisons. Scores come from our research.</small>
+      <small>Built for quick comparisons. Scores + pricing from our research.</small>
     </footer>
   </div>
 
@@ -61,9 +83,7 @@
         <h3 id="explainerTitle">Category explainers</h3>
         <button class="icon-btn" id="closeExplainers" aria-label="Close" title="Close">&times;</button>
       </div>
-      <div class="modal-body">
-        <div id="explainerBody"></div>
-      </div>
+      <div class="modal-body"><div id="explainerBody"></div></div>
       <div class="modal-foot">
         <button id="prevExplain" class="nav">&larr; Prev</button>
         <div class="dots" id="dots"></div>
