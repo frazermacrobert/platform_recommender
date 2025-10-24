@@ -89,6 +89,7 @@
 
   function renderResults({top3, bestTop}, priorities){
     const bandKey = orgSizeSel.value || 'u5000';
+    const showPrice = bandKey !== 'unknown';
     topList.innerHTML = '';
 
     if (top3.length === 0) {
@@ -99,7 +100,7 @@
       top3.forEach(item => {
         const price = item.p.price?.[bandKey];
         const li = document.createElement('li');
-        li.textContent = price ? `${item.name} (${price})` : item.name;
+        li.textContent = (showPrice && price) ? `${item.name} (${price})` : item.name;
         topList.appendChild(li);
       });
     }
@@ -107,7 +108,9 @@
     const cat = window.CATEGORIES.find(c => c.key === priorities[0]);
     if (bestTop) {
       const winnerPrice = bestTop.p.price?.[bandKey];
-      winnerText.textContent = `${bestTop.name}${winnerPrice?` (${winnerPrice})`:''} (best in “${cat?.name ?? priorities[0]}”)`;
+      winnerText.textContent = (showPrice && winnerPrice)
+        ? `${bestTop.name} (${winnerPrice}) (best in “${cat?.name ?? priorities[0]}”)`
+        : `${bestTop.name} (best in “${cat?.name ?? priorities[0]}”)`;
     } else {
       winnerText.textContent = "—";
     }
@@ -131,6 +134,8 @@
     topList.innerHTML = '';
     winnerText.textContent = '';
     hostingSel.value = 'either';
+    // If you want Unknown to be the reset default, use 'unknown' here:
+    // orgSizeSel.value = 'unknown';
     orgSizeSel.value = 'u5000';
   });
 
